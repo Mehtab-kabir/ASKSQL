@@ -1,12 +1,22 @@
 
+import os
 import sqlite3
 import streamlit as st
 import google.generativeai as genai
 import pandas as pd
 import re
+from dotenv import load_dotenv
 
-# Configure Google Generative AI
-genai.configure(api_key="***REMOVED-GEMINI-KEY***")
+# Load environment variables from a local .env file (never commit real keys)
+load_dotenv()
+
+# Configure Google Generative AI.
+# Set GEMINI_API_KEY in your environment or a .env file.
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    st.error("GEMINI_API_KEY is not set. Add it to your environment or a .env file.")
+    st.stop()
+genai.configure(api_key=api_key)
 
 # Set up Streamlit app
 st.title("WELCOME TO ASK SQL")

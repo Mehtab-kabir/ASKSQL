@@ -49,6 +49,16 @@ cd <project-directory>
 pip install -r requirements.txt
 ```
 
+Configure your API key (the app reads `GEMINI_API_KEY` from the environment):
+
+```bash
+cp .env.example .env
+# then edit .env and set GEMINI_API_KEY=your-gemini-api-key
+```
+
+> 🔑 Get a key from [Google AI Studio](https://aistudio.google.com/apikey).
+> Never hardcode the key in `app.py` or commit your `.env` file.
+
 Run the application with:
 
 ```bash
